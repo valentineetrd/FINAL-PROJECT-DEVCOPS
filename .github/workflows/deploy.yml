@@ -38,7 +38,7 @@ jobs:
           --data '{
             "personalizations": [{
               "to": [
-                { "email": "akinfeayomide6@gmail.com" },
+                { "email": "akinfeayomide0@gmail.com" },
                 { "email": "omolanweshly@gmail.com" }
               ],
               "subject": "✅ Deployment Successful: Villa Agency Website"
