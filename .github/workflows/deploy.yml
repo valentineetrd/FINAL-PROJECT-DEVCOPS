@@ -1,0 +1,51 @@
+name: CI/CD Pipeline with Email Notification
+
+on:
+  push:
+    branches: [ project ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Login to Docker Hub with token
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        token: ${{ secrets.DOCKER_TOKEN }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        tags: akinfeayomide373/final-devops-project:latest
+
+    - name: Send email notification to deployer and partner
+      if: success()
+      run: |
+        curl --request POST \
+          --url https://api.sendgrid.com/v3/mail/send \
+          --header "Authorization: Bearer ${{ secrets.SENDGRID_API_KEY }}" \
+          --header "Content-Type: application/json" \
+          --data '{
+            "personalizations": [{
+              "to": [
+                { "email": "akinfeayomide6@gmail.com" },
+                { "email": "omolanweshly@gmail.com" }
+              ],
+              "subject": "✅ Deployment Successful: Villa Agency Website"
+            }],
+            "from": { "email": "'"${{ secrets.EMAIL_FROM }}"'" },
+            "content": [{
+              "type": "text/plain",
+              "value": "Hello Team,\n\nYour static website has been successfully built and deployed via GitHub Actions.\n\nDocker Image: akinfeayomide373/final-devops-project:latest\nBranch: project\nTimestamp: '"$(date)"'\n\nVisit your EC2 instance to verify the deployment.\n\n— DevOps Bot"
+            }]
+          }'
