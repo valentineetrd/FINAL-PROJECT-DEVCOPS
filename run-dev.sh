@@ -15,7 +15,7 @@ NC='\033[0m'
 
 # Config
 CONTAINER_NAME="local-site"
-HOST_PORT=8002
+HOST_PORT=8005
 CONTAINER_PORT=80
 
 # ============================================
