@@ -1,17 +1,17 @@
 
 ├── .github/
-│   └── workflows/
-│       └── deploy.yml           # CI/CD workflow (GitHub Actions)
-├── assets/                      # Website assets (images, css, webfont ,js.)
-├── vendor/                      # Third-party libraries
-│   ├── bootstrap/               # Bootstrap CSS/JS files
-│   └── jquery/                  # jQuery library files
-├── index.html                   # Homepage
-├── contact.html                 # Contact page
-├── properties.html              # Properties listing page
-├── property-details.html        # Property details page
-├── Dockerfile                   # Docker build configuration
-├── run-dev.sh                   # Local testing script (optional)
+ │   └── workflows/
+ │       └── deploy.yml           # CI/CD workflow (GitHub Actions)
+ ├── assets/                      # Website assets (images, css, webfont ,js.)
+ ├── vendor/                      # Third-party libraries
+ │   ├── bootstrap/               # Bootstrap CSS/JS files
+ │   └── jquery/                  # jQuery library files
+ ├── index.html                   # Homepage
+ ├── contact.html                 # Contact page
+ ├── properties.html              # Properties listing page
+ ├── property-details.html        # Property details page
+ ├── Dockerfile                   # Docker build configuration
+ ├── run-dev.sh                   # Local testing script (optional)
 └── README.md                    # Project documentation
 
 
