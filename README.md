@@ -1,4 +1,4 @@
-.
+
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml           # CI/CD workflow (GitHub Actions)
